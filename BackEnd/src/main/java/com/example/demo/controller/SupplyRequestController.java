@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
 import com.example.demo.exception.ResourceNotFoundException;
 import com.example.demo.model.SupplyRequest;
 import com.example.demo.repository.SupplyRequestRepository;
@@ -26,7 +25,6 @@ public class SupplyRequestController {
 	private SupplyRequestRepository SupplyRequestRepository;
 	
 	//get all Supply Request
-	
 	@GetMapping("/SupplyRequest")
 	public List<SupplyRequest> getAllSupplyRequest(){
 		return SupplyRequestRepository.findAll();
@@ -45,7 +43,6 @@ public class SupplyRequestController {
 		SupplyRequest supplyRequest = SupplyRequestRepository.findById(supplyRequestID).orElseThrow(()-> new ResourceNotFoundException("Did not have Supply Request ID : " + supplyRequestID));
 		return ResponseEntity.ok(supplyRequest);
 	}
-	
 	
 	//Update Supply Request rest API
 	@PutMapping("/SupplyRequest/{supplyRequestID}")
@@ -66,6 +63,4 @@ public class SupplyRequestController {
 		SupplyRequest updatedsupplyRequest = SupplyRequestRepository.save(supplyRequest);
 		return ResponseEntity.ok(updatedsupplyRequest);
 	}
-	
-	
 }
