@@ -13,7 +13,7 @@ public class Advertisement {
 
     @Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int adId;
+    private long adId;
 
     @Column(name = "title")
     private String adTitle;
@@ -31,7 +31,7 @@ public class Advertisement {
         
     }
 
-    public Advertisement(int adId, String adTitle, String adContent, String adAuthor, String adImage) {
+    public Advertisement(Long adId, String adTitle, String adContent, String adAuthor, String adImage) {
         this.adId = adId;
         this.adTitle = adTitle;
         this.adContent = adContent;
@@ -39,11 +39,11 @@ public class Advertisement {
         this.adImage = adImage;
     }
 
-    public int getAdId() {
+    public long getAdId() {
         return adId;
     }
 
-    public void setAdId(int adId) {
+    public void setAdId(long adId) {
         this.adId = adId;
     }
 

@@ -50,6 +50,7 @@ public class AdvertisementController {
 	public ResponseEntity<Advertisement> updateAdvertisement(@PathVariable Long adId, @RequestBody Advertisement advertisements){
 		
 		Advertisement advertisement = AdvertisementRequestRepository.findById(adId).orElseThrow(()-> new ResourceNotFoundException("Did not have Advertisement ID : " + adId));
+		//advertisement = AdvertisementRequestRepository.findById(adId).orElseThrow(()-> new ResourceNotFoundException("Did not have Advertisement ID : " + adId));
 
 		advertisement.setAdId(advertisement.getAdId());
 		advertisement.setAdTitle(advertisement.getAdTitle());
