@@ -53,15 +53,15 @@ public class SupplyRequestController {
 		
 		SupplyRequest supplyRequest = SupplyRequestRepository.findById(supplyRequestID).orElseThrow(()-> new ResourceNotFoundException("Did not have Supply Request ID : " + supplyRequestID));
 
-		supplyRequest.setSupplyRequestID(supplyRequest.getSupplyRequestID());
-		supplyRequest.setItemName(supplyRequest.getItemName());
-		supplyRequest.setDescription(supplyRequest.getDescription());
-		supplyRequest.setUnitPrice(supplyRequest.getUnitPrice());
-		supplyRequest.setQuantity(supplyRequest.getQuantity());
-		supplyRequest.setImages(supplyRequest.getImages());
-		supplyRequest.setContactPersonName(supplyRequest.getContactPersonName());
-		supplyRequest.setContactPersonNumber(supplyRequest.getContactPersonNumber());
-		supplyRequest.setContactPersonEmail(supplyRequest.getContactPersonEmail());
+		supplyRequest.setSupplyRequestID(supplyRequests.getSupplyRequestID());
+		supplyRequest.setItemName(supplyRequests.getItemName());
+		supplyRequest.setDescription(supplyRequests.getDescription());
+		supplyRequest.setUnitPrice(supplyRequests.getUnitPrice());
+		supplyRequest.setQuantity(supplyRequests.getQuantity());
+		supplyRequest.setImages(supplyRequests.getImages());
+		supplyRequest.setContactPersonName(supplyRequests.getContactPersonName());
+		supplyRequest.setContactPersonNumber(supplyRequests.getContactPersonNumber());
+		supplyRequest.setContactPersonEmail(supplyRequests.getContactPersonEmail());
 		
 		SupplyRequest updatedsupplyRequest = SupplyRequestRepository.save(supplyRequest);
 		return ResponseEntity.ok(updatedsupplyRequest);
