@@ -52,11 +52,11 @@ public class AdvertisementController {
 		Advertisement advertisement = AdvertisementRequestRepository.findById(adId).orElseThrow(()-> new ResourceNotFoundException("Did not have Advertisement ID : " + adId));
 		//advertisement = AdvertisementRequestRepository.findById(adId).orElseThrow(()-> new ResourceNotFoundException("Did not have Advertisement ID : " + adId));
 
-		advertisement.setAdId(advertisement.getAdId());
-		advertisement.setAdTitle(advertisement.getAdTitle());
-		advertisement.setAdAuthor(advertisement.getAdAuthor());
-		advertisement.setAdContent(advertisement.getAdContent());
-		advertisement.setAdImage(advertisement.getAdImage());
+		advertisement.setAdId(advertisements.getAdId());
+		advertisement.setAdTitle(advertisements.getAdTitle());
+		advertisement.setAdAuthor(advertisements.getAdAuthor());
+		advertisement.setAdContent(advertisements.getAdContent());
+		advertisement.setAdImage(advertisements.getAdImage());
 		
 		Advertisement updatedAdvertisementRequest = AdvertisementRequestRepository.save(advertisement);
 		return ResponseEntity.ok(updatedAdvertisementRequest);

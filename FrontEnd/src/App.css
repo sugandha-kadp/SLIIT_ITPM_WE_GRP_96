@@ -1,62 +1,22 @@
 .App {
-  text-align: center;
-}
-
-
-.header{
+  width: 100%;
+  height: 100vh;
   display: flex;
+  justify-content: center;
   align-items: center;
-
-  position: fixed;
-  top:0; left:0; right:0;
-  padding:1px 5%;
-  z-index: 1000;
-  background: rgb(255, 255, 255);
 }
-
-.header .logo{
-
-  font-size: 2.5rem;
-  color:silver;
-  font-weight: 400;
-}
-
-#hdLogo{
-  /* background-color: aqua; */
-  width: 55%;
-}
-#hdNav{
-  /* background-color: blueviolet; */
-  width: 45%;
-}
-
-.header .logo span{
-  color:black;
   
+table {
+  border: 2px solid forestgreen;
+  width: 800px;
+  height: 200px;
 }
-
-.header .navbar a{
-  justify-content: space-between;
-  margin:0 1rem;
-  font-size: 1.2rem;
-  color:var(--black);
-}
-
-.header .navbar a:hover{
-  color:cornflowerblue;
-}
-
-
-
-
-
-.footer {
-  position: fixed;
-  bottom: 0;
-  width:100%;
-  height: 60px;
-  background-color:#F8F4F4;
+  
+th {
+  border-bottom: 1px solid black;
   text-align: center;
-  color: white;
 }
-
+  
+td {
+  text-align: center;
+}
