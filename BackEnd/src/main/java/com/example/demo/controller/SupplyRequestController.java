@@ -66,6 +66,4 @@ public class SupplyRequestController {
 		SupplyRequest updatedsupplyRequest = SupplyRequestRepository.save(supplyRequest);
 		return ResponseEntity.ok(updatedsupplyRequest);
 	}
-	
-	
 }
