@@ -21,13 +21,12 @@ import com.example.demo.repository.MarketPlaceRepository;
 @RestController
 @RequestMapping("/api/v1/")
 public class MarketPlaceController {
-	
+
 	@Autowired
 	private MarketPlaceRepository MarketPlaceRepository;
 
-	
 	@GetMapping("/MarketItem")
-	public List<MarketItem> getAllMarketItem(){
+	public List<MarketItem> getAllMarketItem() {
 		return MarketPlaceRepository.findAll();
 	}
 
@@ -38,25 +37,37 @@ public class MarketPlaceController {
 
 	@GetMapping("/MarketItem/{marketItemsID}")
 	public ResponseEntity<MarketItem> getMarketItemById(@PathVariable Long marketItemsID) {
-		MarketItem marketItem = MarketPlaceRepository.findById(marketItemsID).orElseThrow(()-> new ResourceNotFoundException("Did not have MarketItemID : " + marketItemsID));
+		MarketItem marketItem = MarketPlaceRepository.findById(marketItemsID)
+				.orElseThrow(() -> new ResourceNotFoundException("Did not have MarketItemID : " + marketItemsID));
 		return ResponseEntity.ok(marketItem);
 	}
-	
+
 	@PutMapping("/MarketItem/{marketItemsID}")
-	public ResponseEntity<MarketItem> updateMarketItem(@PathVariable Long marketItemsID, @RequestBody MarketItem marketItems){
-		
-		MarketItem marketItem = MarketPlaceRepository.findById(marketItemsID).orElseThrow(()-> new ResourceNotFoundException("Did not have MarketItemID : " + marketItemsID));
+	public ResponseEntity<MarketItem> updateMarketItem(@PathVariable Long marketItemsID,
+			@RequestBody MarketItem marketItems) {
+
+		MarketItem marketItem = MarketPlaceRepository.findById(marketItemsID)
+				.orElseThrow(() -> new ResourceNotFoundException("Did not have MarketItemID : " + marketItemsID));
 
 		marketItem.setProductName(marketItem.getProductName());
 		marketItem.setImages(marketItem.getImages());
 		marketItem.setStock(marketItem.getStock());
 		marketItem.setItemCode(marketItem.getItemCode());
-        marketItem.setPrice(marketItem.getPrice());
+		marketItem.setPrice(marketItem.getPrice());
 		marketItem.setDescription(marketItem.getDescription());
 
 		MarketItem updatedmarketItem = MarketPlaceRepository.save(marketItem);
 		return ResponseEntity.ok(updatedmarketItem);
 	}
-	
-	
+
+	// Delete Market Item
+
+	@DeleteMapping("/MarketItem/{marketItemsID}")
+	public ResponseEntity<MarketItem> deleteMarketItem(@PathVariable Long marketItemsID) {
+		MarketItem marketItem = MarketPlaceRepository.findById(marketItemsID)
+			.orElseThrow(() -> new ResourceNotFoundException("Did not have MarketItemID : " + marketItemsID));
+			MarketPlaceRepository.delete(marketItem);
+	return ResponseEntity.ok(marketItem);
+	}
+
 }
