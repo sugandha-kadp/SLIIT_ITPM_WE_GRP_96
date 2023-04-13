@@ -33,7 +33,7 @@ public class SupplyRequestController {
 
 	// get all Supply Request
 
-	@GetMapping("/SupplyRequest")
+	@GetMapping("/SupplyRequests")
 	public List<SupplyRequest> getAllSupplyRequest() {
 		return SupplyRequestRepository.findAll();
 	}
@@ -89,7 +89,7 @@ public class SupplyRequestController {
 	////////////////////////////////////////////APPROVED_SUPPLY REQUESTs///////////////////////////////////////////////////////
 	
 	//get all Approved Supply Request
-	@GetMapping("/ApprovedSupplyRequest")
+	@GetMapping("/ApprovedSupplyRequests")
 	public List<ApprovedSupplyRequest> getAllApprovedSupplyRequest(){
 		return ApprovedSupplyRequestRepository.findAll();
 	}
@@ -111,7 +111,7 @@ public class SupplyRequestController {
 	////////////////////////////////////////////REJECTED_SUPPLY REQUESTs///////////////////////////////////////////////////////
 	
 	//get all Rejected Supply Request
-	@GetMapping("/RejectedSupplyRequest")
+	@GetMapping("/RejectedSupplyRequests")
 	public List<RejectedSupplyRequest> getAllRejectedSupplyRequest(){
 		return RejectedSupplyRequestRepository.findAll();
 	}
