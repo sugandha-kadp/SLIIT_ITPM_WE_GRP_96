@@ -1,152 +1,210 @@
 package com.example.demo.model;
 
+import java.util.Collection;
+import java.util.Date;
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
-@Entity
-@Table(name = "userTbl")
-public class User {
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
+@Table(name = "AUTH_USER_DETAILS")
+@Entity
+public class User implements UserDetails {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long userID;
-	
-	@Column(name = "type")
-	private String type;
+	private long id;
 
-	@Column(name = "firstName")
+	@Column(name = "USER_NAME", unique = true)
+	private String userName;
+
+	@Column(name = "USER_KEY")
+	private String password;
+
+
+	@Column(name = "CREATED_ON")
+	private Date createdAt;
+
+	@Column(name = "UPDATED_ON")
+	private Date updatedAt;
+
+	@Column(name = "first_name")
 	private String firstName;
 
-	@Column(name = "lastName")
+	@Column(name = "last_name")
 	private String lastName;
-
-	@Column(name = "contactNumber")
-	private String contactNumber;
 
 	@Column(name = "email")
 	private String email;
 
-	@Column(name = "profilePic")
+	@Column(name = "phone_number")
+	private String phoneNumber;
+	
+	@Column(name = "profile_pic")
 	private String profilePic;
 
-	@Column(name = "userName")
-	private String userName;
-
-	@Column(name = "password")
-	private String password;
-
-
+	@Column(name = "enabled")
+	private boolean enabled=true;
+	
 	public User() {
-
+		
 	}
-
-
-	public User(long userID, String type, String firstName, String lastName, String contactNumber, String email,
-			String profilePic, String userName, String password) {
+	
+	public User(long id, String userName, String password, String firstName, String lastName, String email,
+			String phoneNumber, String profilePic) {
 		super();
-		this.userID = userID;
-		this.type = type;
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.contactNumber = contactNumber;
-		this.email = email;
-		this.profilePic = profilePic;
+		this.id = id;
 		this.userName = userName;
 		this.password = password;
-	}
-
-
-	public long getUserID() {
-		return userID;
-	}
-
-
-	public void setUserID(long userID) {
-		this.userID = userID;
-	}
-
-
-	public String getType() {
-		return type;
-	}
-
-
-	public void setType(String type) {
-		this.type = type;
-	}
-
-
-	public String getFirstName() {
-		return firstName;
-	}
-
-
-	public void setFirstName(String firstName) {
 		this.firstName = firstName;
-	}
-
-
-	public String getLastName() {
-		return lastName;
-	}
-
-
-	public void setLastName(String lastName) {
 		this.lastName = lastName;
-	}
-
-
-	public String getContactNumber() {
-		return contactNumber;
-	}
-
-
-	public void setContactNumber(String contactNumber) {
-		this.contactNumber = contactNumber;
-	}
-
-
-	public String getEmail() {
-		return email;
-	}
-
-
-	public void setEmail(String email) {
 		this.email = email;
-	}
-
-
-	public String getProfilePic() {
-		return profilePic;
-	}
-
-
-	public void setProfilePic(String profilePic) {
+		this.phoneNumber = phoneNumber;
 		this.profilePic = profilePic;
 	}
+	
+	@ManyToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+	@JoinTable(name = "AUTH_USER_AUTHORITY", joinColumns = @JoinColumn(referencedColumnName = "id"),inverseJoinColumns = @JoinColumn(referencedColumnName ="id"))
+	private List<Authority> authorities;
 
+	@Override
+	public Collection<? extends GrantedAuthority> getAuthorities() {
+		// TODO Auto-generated method stub
+		return authorities;
+	}
+
+	@Override
+	public String getPassword() {
+		// TODO Auto-generated method stub
+		return this.password;
+	}
+
+	@Override
+	public String getUsername() {
+		// TODO Auto-generated method stub
+		return this.userName;
+	}
+
+	@Override
+	public boolean isAccountNonExpired() {
+		// TODO Auto-generated method stub
+		return this.enabled;
+	}
+
+	@Override
+	public boolean isAccountNonLocked() {
+		// TODO Auto-generated method stub
+		return this.enabled;
+	}
+
+	@Override
+	public boolean isCredentialsNonExpired() {
+		// TODO Auto-generated method stub
+		return this.enabled;
+	}
+
+	@Override
+	public boolean isEnabled() {
+		// TODO Auto-generated method stub
+		return this.enabled;
+	}
+
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
 
 	public String getUserName() {
 		return userName;
 	}
 
-
 	public void setUserName(String userName) {
 		this.userName = userName;
 	}
 
-
-	public String getPassword() {
-		return password;
+	public Date getCreatedAt() {
+		return createdAt;
 	}
 
+	public void setCreatedAt(Date createdAt) {
+		this.createdAt = createdAt;
+	}
+
+	public Date getUpdatedAt() {
+		return updatedAt;
+	}
+
+	public void setUpdatedAt(Date updatedAt) {
+		this.updatedAt = updatedAt;
+	}
+
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getPhoneNumber() {
+		return phoneNumber;
+	}
+
+	public void setPhoneNumber(String phoneNumber) {
+		this.phoneNumber = phoneNumber;
+	}
 
 	public void setPassword(String password) {
 		this.password = password;
 	}
+
+	public void setAuthorities(List<Authority> authorities) {
+		this.authorities = authorities;
+	}
+
+	public void setEnabled(boolean enabled) {
+		this.enabled = enabled;
+	}
 	
+	public String getProfilePic() {
+		return profilePic;
+	}
+
+	public void setProfilePic(String profilePic) {
+		this.profilePic = profilePic;
+	}
+	
+	
+
 }

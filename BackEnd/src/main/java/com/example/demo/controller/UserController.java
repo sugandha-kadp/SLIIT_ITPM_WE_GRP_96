@@ -1,9 +1,7 @@
 package com.example.demo.controller;
-
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -13,13 +11,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.exception.ResourceNotFoundException;
 import com.example.demo.model.User;
 import com.example.demo.repository.UserManagementRepository;
-import com.example.demo.service.UserService;
 
 @CrossOrigin(origins = "http://localhost:3000")
 @RestController
@@ -43,26 +39,33 @@ public class UserController {
 	}
 
 	// get User by ID
-	@GetMapping("/User/{userID}")
-	public ResponseEntity<User> getUserById(@PathVariable Long userID) {
-		User user = UserManagementRepository.findById(userID).orElseThrow(
-				() -> new ResourceNotFoundException("Did not have Supply Request ID : " + userID));
+	@GetMapping("/User/{id}")
+	public ResponseEntity<User> getUserById(@PathVariable Long id) {
+		User user = UserManagementRepository.findById(id).orElseThrow(
+				() -> new ResourceNotFoundException("Did not have User ID : " + id));
 		return ResponseEntity.ok(user);
 	}
+	
+	// get User Name
+	@GetMapping("/User/{userName}")
+	public ResponseEntity<User> findByUserName(@PathVariable Long userName) {
+		User user = UserManagementRepository.findById(userName).orElseThrow(
+				() -> new ResourceNotFoundException("Did not have User ID : " + userName));
+		return ResponseEntity.ok(user);
+	}
+	
 
 	// Update User
-	@PutMapping("/User/{userID}")
-	public ResponseEntity<User> updateUser(@PathVariable Long userID,
+	@PutMapping("/User/{id}")
+	public ResponseEntity<User> updateUser(@PathVariable Long id,
 			@RequestBody User user) {
 
-		User user1 = UserManagementRepository.findById(userID).orElseThrow(
-				() -> new ResourceNotFoundException("Did not have User ID : " + userID));
+		User user1 = UserManagementRepository.findById(id).orElseThrow(
+				() -> new ResourceNotFoundException("Did not have User ID : " + id));
 
-		user1.setUserID(user1.getUserID());
-		user1.setType(user1.getType());
 		user1.setFirstName(user1.getFirstName());
 		user1.setLastName(user1.getLastName());
-		user1.setContactNumber(user1.getContactNumber());
+		user1.setPhoneNumber(user1.getPhoneNumber());
 		user1.setEmail(user1.getEmail());
 		user1.setProfilePic(user1.getProfilePic());
 		user1.setUserName(user1.getUserName());
@@ -73,27 +76,14 @@ public class UserController {
 	}
 
 	// Delete Supply Request
-	@DeleteMapping("/User/{userID}")
-	public ResponseEntity<User> deleteUser(@PathVariable Long userID) {
+	@DeleteMapping("/User/{id}")
+	public ResponseEntity<User> deleteUser(@PathVariable Long id) {
 
-		User user = UserManagementRepository.findById(userID)
-				.orElseThrow(() -> new ResourceNotFoundException("Did not have userID : " + userID));
+		User user = UserManagementRepository.findById(id)
+				.orElseThrow(() -> new ResourceNotFoundException("Did not have id : " + id));
 		UserManagementRepository.delete(user);
 		return ResponseEntity.ok(user);
 
 	}
-	
-	 @Autowired
-	    private UserService userService;
 
-	    @PostMapping("/login")
-	    public ResponseEntity<User> login(@RequestParam String userName, @RequestParam String password) {
-	        User user = userService.login(userName, password);
-	        if (user != null) {
-	            return ResponseEntity.ok(user);
-	        } else {
-	            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
-	        }
-	    }
-	
 }
