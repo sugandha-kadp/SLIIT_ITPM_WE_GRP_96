@@ -46,14 +46,14 @@ public class UserController {
 		return ResponseEntity.ok(user);
 	}
 	
-	// get User Name
-	@GetMapping("/User/{userName}")
-	public ResponseEntity<User> findByUserName(@PathVariable Long userName) {
-		User user = UserManagementRepository.findById(userName).orElseThrow(
-				() -> new ResourceNotFoundException("Did not have User ID : " + userName));
-		return ResponseEntity.ok(user);
-	}
-	
+//	// get User Name
+//	@GetMapping("/User/{userName}")
+//	public ResponseEntity<User> findByUserName(@PathVariable Long userName) {
+//		User user = UserManagementRepository.findById(userName).orElseThrow(
+//				() -> new ResourceNotFoundException("Did not have User ID : " + userName));
+//		return ResponseEntity.ok(user);
+//	}
+//	
 
 	// Update User
 	@PutMapping("/User/{id}")
