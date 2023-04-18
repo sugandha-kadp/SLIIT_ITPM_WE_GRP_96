@@ -6,6 +6,7 @@ import MarketPlaceComponent from './components/Marketplace_Management_IT20659608
 import Home from './components/Common_components/Home';
 import Login from './components/Login/Login';
 import DashBoard from './components/Common_components/DashBoard';
+import ListRecipeComponent from './components/Recipe_Blog_Management_IT20659912/ListRecipeComponent';
 
 
 function App() {
@@ -30,7 +31,7 @@ function App() {
 
 
             {/* Recipe */}
-            {/* <Route path="/" component={ }></Route> */}
+            <Route path="/Recipes" component={ListRecipeComponent}></Route>
 
             {/* Advertisement */}
             {/* <Route path="/" component={ }></Route> */}
