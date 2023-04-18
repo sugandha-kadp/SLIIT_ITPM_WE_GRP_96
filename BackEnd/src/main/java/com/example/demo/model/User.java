@@ -13,13 +13,16 @@ public class User {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
+	private long userId;
 
 	@Column(name = "userName", unique = true)
 	private String userName;
 
 	@Column(name = "password")
 	private String password;
+	
+	@Column(name = "role")
+	 private String role;
 
 	@Column(name = "firstName")
 	private String firstName;
@@ -42,12 +45,13 @@ public class User {
 	}
 
 
-	public User(long id, String userName, String password, String firstName, String lastName, String email,
-			String phoneNumber, String profilePic) {
+	public User(long userId, String userName, String password, String role, String firstName, String lastName,
+			String email, String phoneNumber, String profilePic) {
 		super();
-		this.id = id;
+		this.userId = userId;
 		this.userName = userName;
 		this.password = password;
+		this.role = role;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;
@@ -56,13 +60,13 @@ public class User {
 	}
 
 
-	public long getId() {
-		return id;
+	public long getUserId() {
+		return userId;
 	}
 
 
-	public void setId(long id) {
-		this.id = id;
+	public void setUserId(long userId) {
+		this.userId = userId;
 	}
 
 
@@ -83,6 +87,16 @@ public class User {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+
+	public String getRole() {
+		return role;
+	}
+
+
+	public void setRole(String role) {
+		this.role = role;
 	}
 
 
@@ -135,5 +149,5 @@ public class User {
 		this.profilePic = profilePic;
 	}
 
-
+	
 }

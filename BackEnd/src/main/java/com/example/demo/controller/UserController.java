@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -32,7 +33,7 @@ public class UserController {
 	}
 
 	// create a new User
-	@PostMapping("/User")
+	@PostMapping("/AddUser")
 	public User createSupplyRequest(@RequestBody User user) {
 		return UserManagementRepository.save(user);
 
@@ -84,6 +85,12 @@ public class UserController {
 		UserManagementRepository.delete(user);
 		return ResponseEntity.ok(user);
 
+	}
+	
+	@GetMapping("/login/{userId}")
+	public Optional<User> getUsers(@PathVariable long userId){
+		return UserManagementRepository.findById(userId);
+		
 	}
 
 }
