@@ -50,14 +50,14 @@ public class MarketPlaceController {
 		MarketItem marketItem = MarketPlaceRepository.findById(marketItemsID)
 				.orElseThrow(() -> new ResourceNotFoundException("Did not have MarketItemID : " + marketItemsID));
 
-		marketItem.setProductName(marketItem.getProductName());
-		marketItem.setImages(marketItem.getImages());
-		marketItem.setStock(marketItem.getStock());
-		marketItem.setItemCode(marketItem.getItemCode());
-		marketItem.setPrice(marketItem.getPrice());
-		marketItem.setDescription(marketItem.getDescription());
+		marketItem.setProductName(marketItems.getProductName());
+		marketItem.setImages(marketItems.getImages());
+		marketItem.setStock(marketItems.getStock());
+		marketItem.setItemCode(marketItems.getItemCode());
+		marketItem.setPrice(marketItems.getPrice());
+		marketItem.setDescription(marketItems.getDescription());
 
-		MarketItem updatedmarketItem = MarketPlaceRepository.save(marketItem);
+		MarketItem updatedmarketItem = MarketPlaceRepository.save(marketItems);
 		return ResponseEntity.ok(updatedmarketItem);
 	}
 
