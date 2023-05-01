@@ -6,6 +6,7 @@ import MarketPlaceComponent from './components/Marketplace_Management_IT20659608
 import Home from './components/Common_components/Home';
 import Login from './components/Login/Login';
 import DashBoard from './components/Common_components/DashBoard';
+import AddSupplyRequestFormComponent from './components/Supply_Request_Management_IT20658236/AddSupplyRequestFormComponent';
 
 
 function App() {
@@ -20,8 +21,8 @@ function App() {
 
             {/* Supply Request */}
             <Route path="/SupplyRequests" component={ListSupplyRequestComponent}></Route>
-            {/* <Route path="/Add-SupplyRequest" component={ }></Route>
-            <Route path="/Update-SupplyRequest" component={ }></Route>
+            <Route path="/AddSupplyRequest" component={AddSupplyRequestFormComponent}></Route>
+            {/* <Route path="/Update-SupplyRequest" component={ }></Route>
             <Route path="/Approved-SupplyRequest" component={ }></Route>
             <Route path="/Rejected-SupplyRequest" component={ }></Route> */}
 
