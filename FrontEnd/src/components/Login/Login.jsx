@@ -78,7 +78,7 @@ class Login extends Component {
             <div >
                 <HeaderBeforLoged></HeaderBeforLoged>
                 <div id='lgnLf'>
-                <img id='lgnLfIMG'  alt="Image For Login"  src={require("../../images/LOGO.png")} /> 
+                <img id='lgnLfIMG'  alt="Image For Login"  src={require("../../images/logo.png")} /> 
                 <div id='lgnDescription'>
                     <h1 style={{ fontSize:48}} class="text-center font-weight-normal"> Wast Not</h1>
                     <p  class="text-center font-weight-light">Wast Not (Pvt) Ltd Company <br/> Online Food wastage Manging System <br/> Autorised Persons Only  </p>
