@@ -16,7 +16,7 @@ class Home extends Component {
                   <div className="container-fluid position-relative p-0">
                     <nav className="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0">
                       <a href="" className="navbar-brand p-0">
-                        <img src="../logo.png" alt="Logo" />
+                        <img src="../LOGO.png" alt="Logo" />
                       </a>
                       <button
                         className="navbar-toggler"
@@ -44,9 +44,6 @@ class Home extends Component {
                             Blog
                           </a>
                         </div>
-                        <a href="" className="btn btn-primary rounded-pill py-2 px-4">
-                          Register
-                        </a>
                         <a href="" className="btn btn-primary rounded-pill py-2 px-4">
                           Register
                         </a>
