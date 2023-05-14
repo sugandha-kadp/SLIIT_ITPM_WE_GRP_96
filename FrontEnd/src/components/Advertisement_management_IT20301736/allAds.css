@@ -1,0 +1,47 @@
+.item-grid-view {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 20px;
+  }
+  
+  .item-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #f2f2f2;
+    border-radius: 5px;
+    padding: 20px;
+  }
+  
+  .item-image {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    margin-bottom: 20px;
+    border-radius: 5px;
+  }
+  
+  .item-name {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+  
+  .item-price {
+    font-size: 16px;
+    margin-bottom: 20px;
+  }
+  
+  .add-to-cart-button {
+    padding: 10px 20px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  .add-to-cart-button:hover {
+    background-color: #555;
+  }
