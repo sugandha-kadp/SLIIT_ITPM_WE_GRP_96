@@ -4,7 +4,7 @@ const ADVERTISEMENT_API_BASE_URL = "http://localhost:8087/api/v2/Advertisement";
 
 class AdvertisementService {
 
-    getAdvertisement() {
+    getallAdvertisement() {
         return axios.get(ADVERTISEMENT_API_BASE_URL);
     }
 
