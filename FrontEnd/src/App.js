@@ -7,6 +7,10 @@ import Home from './components/Common_components/Home';
 import Login from './components/Login/Login';
 import DashBoard from './components/Common_components/DashBoard';
 import ListRecipeComponent from './components/Recipe_Blog_Management_IT20659912/ListRecipeComponent';
+import AddRecipe from './components/Recipe_Blog_Management_IT20659912/AddRecipe';
+import SingleRecipe from './components/Recipe_Blog_Management_IT20659912/SingleRecipe';
+import EditRecipe from './components/Recipe_Blog_Management_IT20659912/EditRecipe';
+import RecipeReport from './components/Recipe_Blog_Management_IT20659912/RecipeReport';
 
 
 function App() {
@@ -21,17 +25,17 @@ function App() {
 
             {/* Supply Request */}
             <Route path="/SupplyRequests" component={ListSupplyRequestComponent}></Route>
-            {/* <Route path="/Add-SupplyRequest" component={ }></Route>
-            <Route path="/Update-SupplyRequest" component={ }></Route>
-            <Route path="/Approved-SupplyRequest" component={ }></Route>
-            <Route path="/Rejected-SupplyRequest" component={ }></Route> */}
 
             {/* Market Place*/}
             <Route path="/MarketPlaceItems" exact component={MarketPlaceComponent}></Route>
 
 
             {/* Recipe */}
-            <Route path="/Recipes" component={ListRecipeComponent}></Route>
+            <Route path="/Recipes" exact component={ListRecipeComponent}></Route>
+            <Route path="/AddRecipe" component={AddRecipe}></Route>
+            <Route path="/View" component={SingleRecipe}></Route>
+            <Route path="/EditRecipe" component={EditRecipe}></Route>
+            <Route path="/Report" component={RecipeReport}></Route>
 
             {/* Advertisement */}
             {/* <Route path="/" component={ }></Route> */}
