@@ -1,19 +1,19 @@
 import React, { Component } from "react";
-import SupplyRequestService from "../../services/SupplyRequestService";
+import MarketPlaceService from "../../services/MarketPlaceService";
 import "../../App.css";
-class ListSupplyRequestComponent extends Component {
+class ListMarketPlaceComponent extends Component {
   constructor(props) {
     super(props);
-    this.state = { supplyRequests: [] };
-    this.viewSupplyRequest = this.viewSupplyRequest.bind(this);
+    this.state = { marketPlace: [] };
+    this.viewMarketPlace = this.viewMarketPlace.bind(this);
   }
   componentDidMount() {
-    SupplyRequestService.getSupplyRequest().then((res) => {
-      this.setState({ supplyRequests: res.data });
+    MarketPlaceService.getSupplyRequest().then((res) => {
+      this.setState({ marketPlace: res.data });
     });
   }
-  viewSupplyRequest(supplyRequestID) {
-    this.props.history.push(`/view-supplyrequest/${supplyRequestID}`);
+  viewMarketPlace(marketItemsID) {
+    this.props.history.push(`/view-marketplace/${marketItemsID}`);
   }
   render() {
     return (
@@ -104,11 +104,11 @@ class ListSupplyRequestComponent extends Component {
                 </thead>{" "}
                 <tbody>
                   {" "}
-                  {this.state.supplyRequests.map((supplyRequest) => (
-                    <tr key={supplyRequest.supplyRequestID}>
+                  {this.state.marketPlace.map((supplyRequest) => (
+                    <tr key={supplyRequest.marketItemsID}>
                       {" "}
                       <td className="text-center">
-                        {supplyRequest.supplyRequestID}
+                        {supplyRequest.marketItemsID}
                       </td>{" "}
                       <td>{supplyRequest.itemName}</td>{" "}
                       <td>{supplyRequest.description}</td>{" "}
@@ -122,8 +122,8 @@ class ListSupplyRequestComponent extends Component {
                             className="buttonView"
                             style={{ verticalAlign: "middle" }}
                             onClick={() =>
-                              this.viewSupplyRequest(
-                                supplyRequest.supplyRequestID
+                              this.viewMarketPlace(
+                                supplyRequest.marketItemsID
                               )
                             }
                           >
@@ -143,4 +143,4 @@ class ListSupplyRequestComponent extends Component {
     );
   }
 }
-export default ListSupplyRequestComponent;
+export default ListMarketPlaceComponent;
