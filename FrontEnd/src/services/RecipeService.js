@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const RECIPE_API_BASE_URL = "http://localhost:8087/api/v1/Recipe";
+const RECIPE_API_BASE_URL = "http://localhost:8080/api/v1/Recipe";
 
 class RecipeService {
 
