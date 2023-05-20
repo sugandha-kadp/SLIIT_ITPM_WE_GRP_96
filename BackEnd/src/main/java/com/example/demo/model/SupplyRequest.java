@@ -8,125 +8,103 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "supplyRequests")
+@Table(name= "supplyRequest")
 public class SupplyRequest {
-
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long supplyRequestID;
-
+	private long requestID;
+	
+	@Column(name = "itemCode")
+	private String itemCode;
+	
 	@Column(name = "itemName")
 	private String itemName;
-
+	
 	@Column(name = "description")
 	private String description;
-
-	@Column(name = "unitPrice")
-	private String unitPrice;
-
-	@Column(name = "quantity")
-	private String quantity;
-
-	@Column(name = "images")
-	private String images;
-
-	@Column(name = "contactPersonName")
-	private String contactPersonName;
-
-	@Column(name = "contactPersonNumber")
-	private String contactPersonNumber;
-
-	@Column(name = "contactPersonEmail")
-	private String contactPersonEmail;
-
+	
+	@Column(name = "price")
+	private String price;
+	
+	@Column(name = "lotQuantity")
+	private String lotQuantity;
+	
+	@Column(name = "images1")
+	private String images1;
+	
 	public SupplyRequest() {
-
+		
 	}
 
-	public SupplyRequest(long supplyRequestID, String itemName, String description, String unitPrice, String quantity,
-			String images, String contactPersonName, String contactPersonNumber, String contactPersonEmail) {
+	public SupplyRequest(long requestID, String itemCode, String itemName, String description, String price,
+			String lotQuantity, String images1) {
 		super();
-		this.supplyRequestID = supplyRequestID;
+		this.requestID = requestID;
+		this.itemCode = itemCode;
 		this.itemName = itemName;
 		this.description = description;
-		this.unitPrice = unitPrice;
-		this.quantity = quantity;
-		this.images = images;
-		this.contactPersonName = contactPersonName;
-		this.contactPersonNumber = contactPersonNumber;
-		this.contactPersonEmail = contactPersonEmail;
+		this.price = price;
+		this.lotQuantity = lotQuantity;
+		this.images1 = images1;
 	}
 
-	public long getSupplyRequestID() {
-		return supplyRequestID;
+	public long getRequestID() {
+		return requestID;
+	}
+
+	public void setRequestID(long requestID) {
+		this.requestID = requestID;
+	}
+
+	public String getItemCode() {
+		return itemCode;
+	}
+
+	public void setItemCode(String itemCode) {
+		this.itemCode = itemCode;
 	}
 
 	public String getItemName() {
 		return itemName;
 	}
 
-	public String getDescription() {
-		return description;
-	}
-
-	public String getUnitPrice() {
-		return unitPrice;
-	}
-
-	public String getQuantity() {
-		return quantity;
-	}
-
-	public String getImages() {
-		return images;
-	}
-
-	public String getContactPersonName() {
-		return contactPersonName;
-	}
-
-	public String getContactPersonNumber() {
-		return contactPersonNumber;
-	}
-
-	public String getContactPersonEmail() {
-		return contactPersonEmail;
-	}
-
-	public void setSupplyRequestID(long supplyRequestID) {
-		this.supplyRequestID = supplyRequestID;
-	}
-
 	public void setItemName(String itemName) {
 		this.itemName = itemName;
+	}
+
+	public String getDescription() {
+		return description;
 	}
 
 	public void setDescription(String description) {
 		this.description = description;
 	}
 
-	public void setUnitPrice(String unitPrice) {
-		this.unitPrice = unitPrice;
+	public String getPrice() {
+		return price;
 	}
 
-	public void setQuantity(String quantity) {
-		this.quantity = quantity;
+	public void setPrice(String price) {
+		this.price = price;
 	}
 
-	public void setImages(String images) {
-		this.images = images;
+	public String getLotQuantity() {
+		return lotQuantity;
 	}
 
-	public void setContactPersonName(String contactPersonName) {
-		this.contactPersonName = contactPersonName;
+	public void setLotQuantity(String lotQuantity) {
+		this.lotQuantity = lotQuantity;
 	}
 
-	public void setContactPersonNumber(String contactPersonNumber) {
-		this.contactPersonNumber = contactPersonNumber;
+	public String getImages1() {
+		return images1;
 	}
 
-	public void setContactPersonEmail(String contactPersonEmail) {
-		this.contactPersonEmail = contactPersonEmail;
+	public void setImages1(String images1) {
+		this.images1 = images1;
 	}
 
+	
+	
 }

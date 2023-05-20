@@ -14,6 +14,9 @@ public class Recipe {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long recipeId;
 
+	@Column(name = "images")
+	private String images;
+
 	@Column(name = "title")
 	private String title;
 
@@ -29,9 +32,10 @@ public class Recipe {
 	}
 
 
-	public Recipe(long recipeId, String title, String content, String author) {
+	public Recipe(long recipeId,String images, String title, String content, String author) {
 		super();
 		this.recipeId = recipeId;
+		this.images = images;
 		this.title = title;
 		this.content = content;
 		this.author = author;
@@ -47,6 +51,13 @@ public class Recipe {
 		this.recipeId = recipeId;
 	}
 
+	public String getImages() {
+		return images;
+	}
+
+	public void setImages(String images) {
+		this.images = images;
+	}
 
 	public String getTitle() {
 		return title;
