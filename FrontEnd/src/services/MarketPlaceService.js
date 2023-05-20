@@ -20,6 +20,10 @@ class MarketPlaceService {
         return axios.put(MARKETITEM_API_BASE_URL + '/' + marketItemsID, marketItems);
     }
 
+    deleteMarketItemRequest(marketItemsID) {
+        return axios.delete(MARKETITEM_API_BASE_URL + '/' + marketItemsID);
+    }
+
 }
 
 export default new MarketPlaceService()
