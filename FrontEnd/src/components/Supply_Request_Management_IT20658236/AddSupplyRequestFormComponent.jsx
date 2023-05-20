@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import SupplyRequestService from '../../services/SupplyRequestService';
 
+<<<<<<< HEAD
 export default class AddSupplyRequestFormComponent extends Component {
   constructor(props) {
     super(props);
@@ -199,3 +200,16 @@ export default class AddSupplyRequestFormComponent extends Component {
     );
   }
 }
+=======
+class AddSupplyRequestFormComponent extends Component {
+    render() {
+        return (
+            <div>
+                
+            </div>
+        );
+    }
+}
+
+export default AddSupplyRequestFormComponent;
+>>>>>>> 79591a10c4c45013ce1a82d56d1773dc932b66e0

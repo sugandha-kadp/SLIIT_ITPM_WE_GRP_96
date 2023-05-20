@@ -16,7 +16,7 @@
     "react-scripts": "^5.0.1",
     "react-to-pdf": "^0.0.14",
     "react-to-print": "^2.14.6",
-    "styled-components": "^5.3.5",
+    "styled-components": "^5.3.9",
     "sweetalert": "^2.1.2"
   },
   "scripts": {

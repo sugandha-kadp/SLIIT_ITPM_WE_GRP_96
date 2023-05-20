@@ -16,7 +16,7 @@ class HeaderBeforLoged extends Component {
         return (
             <div header class="header">
             <div id='hdLogo'>
-                <img alt="Logo"  src={require("../../images/LOGO.png")} width="110"  height="63" className="d-inline-block align-top" />          
+                <img alt="Logo"  src={require("../../images/logo.png")} width="110"  height="63" className="d-inline-block align-top" />          
                 <a href="#Home" class="logo"> <span>Wast</span>Not </a>
             </div>
             <div id='hdNav'>
