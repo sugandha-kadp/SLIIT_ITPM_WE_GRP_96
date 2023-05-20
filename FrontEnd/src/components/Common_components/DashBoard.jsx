@@ -14,7 +14,7 @@ class DashBoard extends Component {
                         </div>
 
                         <div id='sb2'>
-                            <button className="button" style={{ verticalAlign: "middle" }} onClick={this.addStockItem}> <span>Add </span></button>
+                            <button className="button" style={{ verticalAlign: "middle" }} onClick={this}> <span>Add </span></button>
                         </div>
 
                         <div id='sb3'>

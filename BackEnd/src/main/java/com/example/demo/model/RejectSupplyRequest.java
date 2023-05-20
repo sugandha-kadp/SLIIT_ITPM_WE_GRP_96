@@ -8,8 +8,8 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name= "supplyRequest")
-public class SupplyRequest {
+@Table(name= "rejected_supply_request")
+public class RejectSupplyRequest {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -33,12 +33,15 @@ public class SupplyRequest {
 	@Column(name = "images1")
 	private String images1;
 	
-	public SupplyRequest() {
+	@Column(name = "dateTime")
+	private String dateTime;
+	
+	public RejectSupplyRequest() {
 		
 	}
 
-	public SupplyRequest(long requestID, String itemCode, String itemName, String description, String price,
-			String lotQuantity, String images1) {
+	public RejectSupplyRequest(long requestID, String itemCode, String itemName, String description, String price,
+			String lotQuantity, String images1, String dateTime) {
 		super();
 		this.requestID = requestID;
 		this.itemCode = itemCode;
@@ -47,6 +50,7 @@ public class SupplyRequest {
 		this.price = price;
 		this.lotQuantity = lotQuantity;
 		this.images1 = images1;
+		this.dateTime = dateTime;
 	}
 
 	public long getRequestID() {
@@ -103,6 +107,14 @@ public class SupplyRequest {
 
 	public void setImages1(String images1) {
 		this.images1 = images1;
+	}
+
+	public String getDateTime() {
+		return dateTime;
+	}
+
+	public void setDateTime(String dateTime) {
+		this.dateTime = dateTime;
 	}
 
 	
