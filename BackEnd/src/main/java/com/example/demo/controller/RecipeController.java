@@ -19,7 +19,7 @@ import com.example.demo.model.Recipe;
 import com.example.demo.repository.RecipeRepository;
 
 
-@CrossOrigin(origins = "http://localhost:8080")
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping("/api/v1/")
 public class RecipeController {
