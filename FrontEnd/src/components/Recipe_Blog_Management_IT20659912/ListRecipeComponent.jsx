@@ -1,45 +1,58 @@
+// ListEmployeeComponent.jsx
 import React, { useEffect, useState } from 'react';
 import '../../App.css';
-import RecipeService from '../../services/RecipeService';
-import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
+import { useHistory } from 'react-router-dom';
+import axios from 'axios';
 
-function RecipeList() {
+function ListEmployeeComponent(props) {
   const [recipes, setRecipes] = useState([]);
+  const history = useHistory();
 
   useEffect(() => {
-    RecipeService.getRecipe()
-      .then((res) => {
-        setRecipes(res.data);
+    axios
+      .get('http://localhost:8080/api/v1/RecipeRepository')
+      .then((response) => {
+        console.log(response.data);
+        setRecipes(response.data);
       })
       .catch((error) => {
-        console.error('Error fetching recipes:', error);
+        if (error.response) {
+          alert(error.response.data);
+        }
       });
   }, []);
 
-  const history = useHistory();
-
-    const handleClick = () => {
-      history.push("/AddRecipe");
-    };
-    const handleClick1 = () => {
-      history.push("/EditRecipe");
-    }
-    const handleClick2 = () => {
-      history.push("/Report");
-    }
-    const handleDelete = () => {
-      const confirmed = window.confirm('Are you sure you want to delete this recipe?');
-
-      if (confirmed){
-
-      }
-    }
-
+ 
+  const handleClick = (recipeId) => {
+    history.push(`/View/${recipeId}`);
+  }
+  const handleEdit = (recipeId) => {
+    history.push(`/EditRecipe/${recipeId}`);
+  }
+  const handleDelete = (recipeId) => {
+    const confirmDelete = window.confirm('Are you sure you want to delete this recipe?');
+    axios
+      .delete(`http://localhost:8080/api/v1/Recipe/${recipeId}`)
+      .then((response) => {
+        console.log(response.data);
+        alert('Recipe deleted successfully');
+        window.location.reload();
+      })
+      .catch((error) => {
+        if (error.response) {
+          alert(error.response.data);
+        }
+      });
+      
+  }
+  const handleNavigate = () => {
+    history.push(`/Report`);
+  }
+  
   return (
     <div>
       <h1 className="text-center">Recipes Blogs</h1>
-      <button onClick={handleClick}>Create Recipe</button>
-      <button onClick={handleClick2}>Reports</button>
+      <button onClick={handleNavigate}>Reports</button>
       <div className="col mt-4 mb-5">
         <div id="div3" className="row">
           <table className="table table-striped table-bordered">
@@ -59,7 +72,11 @@ function RecipeList() {
                   <td>{recipe.title}</td>
                   <td>{recipe.content}</td>
                   <td>{recipe.author}</td>
-                  <td><button onClick={handleClick1}>Edit</button><button onClick={handleDelete}>Delete</button></td>
+                  <td>
+                    <button onClick={()=>handleClick(recipe.recipeId)}>View</button>
+                    <button onClick={()=>handleEdit(recipe.recipeId)}>Edit</button>
+                    <button onClick={()=>handleDelete(recipe.recipeId)}>Delete</button>
+                  </td>
                 </tr>
               ))}
             </tbody>
@@ -70,5 +87,4 @@ function RecipeList() {
   );
 }
 
-
-export default RecipeList;
+export default ListEmployeeComponent;
