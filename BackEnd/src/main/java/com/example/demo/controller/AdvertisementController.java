@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -34,7 +35,6 @@ public class AdvertisementController {
 	@PostMapping("/Advertisment")
 	public Advertisement createAdvertisement(@RequestBody Advertisement advertisement) {
 		return AdvertisementRequestRepository.save(advertisement);
-	
 	}
 	
 	//get Advertisement by id rest API
@@ -61,4 +61,14 @@ public class AdvertisementController {
 		Advertisement updatedAdvertisementRequest = AdvertisementRequestRepository.save(advertisement);
 		return ResponseEntity.ok(updatedAdvertisementRequest);
 	}
+
+		// Delete Advertisement
+		@DeleteMapping("/Advertisment/{adId}")
+		public ResponseEntity<Advertisement> deleteAdvertisement(@PathVariable Long adId) {
+	
+			Advertisement advertisement = AdvertisementRequestRepository.findById(adId)
+					.orElseThrow(() -> new ResourceNotFoundException("Did not have Advertisement ID : " + adId));
+					AdvertisementRequestRepository.delete(advertisement);
+			return ResponseEntity.ok(advertisement);
+		}
 }

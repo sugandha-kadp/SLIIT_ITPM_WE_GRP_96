@@ -1,14 +1,14 @@
 import React, { useState } from "react"
 import axios from "axios";
-import advertisementService from "../../services/AdvertisementService";
 import './addAdvertisement.css';
+import { Link } from "react-router-dom"
 
 export default function AdvertismentAdd() {
 
-  const [title, setTitle] = useState('');
-  const [content, setContent] = useState('');
-  const [author, setAuthor] = useState('');
-  const [image, setImage] = useState('');
+  const [adTitle, setTitle] = useState('');
+  const [adContent, setContent] = useState('');
+  const [adAuthor, setAuthor] = useState('');
+  const [adImage, setImage] = useState('');
 
   const handleTitleChange = (event) => {
     setTitle(event.target.value);
@@ -30,21 +30,21 @@ export default function AdvertismentAdd() {
     e.preventDefault();
 
     const newAd = {
-        title,
-        content,
-        author,
-        image
+      adTitle,
+      adContent,
+      adAuthor,
+      adImage
     }
 
-    advertisementService.addAdvertisement(newAd).then((res) => {
-      alert('Advertisement added!', 'New Advertisement successfully added to System', 'success');
-    });
+    // advertisementService.addAdvertisement(newAd).then((res) => {
+    //   alert('Advertisement added!', 'New Advertisement successfully added to System', 'success');
+    // });
 
-    // axios.post('http://localhost:8087/api/v2/Advertisment', newAd).then(() => {
-    //     alert("Advertisement added successfully");
-    // }).catch((err) => {
-    //     alert(err)
-    // })
+    axios.post('http://localhost:8087/api/v2/Advertisment', newAd).then(() => {
+        alert("Advertisement added successfully");
+    }).catch((err) => {
+        alert(err)
+    })
 }
 
   return (
@@ -56,7 +56,7 @@ export default function AdvertismentAdd() {
         placeholder="enter Ad Title"
         id="item-name"
         name="item-name"
-        value={title}
+        value={adTitle}
         onChange={handleTitleChange}
       />
 
@@ -65,7 +65,7 @@ export default function AdvertismentAdd() {
         id="description"
         placeholder="enter content"
         name="content"
-        value={content}
+        value={adContent}
         onChange={handleContentChange}
       />
 
@@ -75,7 +75,7 @@ export default function AdvertismentAdd() {
         placeholder="enter Author Name"
         id="price"
         name="price"
-        value={author}
+        value={adAuthor}
         onChange={handleAuthorChange}
       />
 
@@ -85,11 +85,15 @@ export default function AdvertismentAdd() {
         id="image"
         name="image"
         placeholder="paste image URL here"
-        value={image}
+        value={adImage}
         onChange={handleImageChange}
       />
 
-      <button type="submit">Add Advertisement</button>
+      <button type="submit">Add Advertisement</button><br></br>
+
+      <Link to={`/manageAds`}>
+        <button>View Aded Advertisment</button>
+      </Link>
     </form>
   );
 
