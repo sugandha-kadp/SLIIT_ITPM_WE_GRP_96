@@ -22,6 +22,7 @@ function RecipeForm() {
     axios.post('http://localhost:8080/api/v1/Recipe', newItem)
       .then(() => {
         alert('Recipe added successfully');
+        window.location.reload(); // Refresh the page
       })
       .catch((err) => {
         alert(err);
