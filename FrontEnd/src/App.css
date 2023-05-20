@@ -46,6 +46,10 @@
   color:cornflowerblue;
 }
 
+
+
+
+
 .footer {
   position: fixed;
   bottom: 0;
@@ -437,4 +441,9 @@ margin-top: 130px;
     left: 0;
   }
   
-  
+  #qimg{
+    width: 40%;
+    height: 40%;
+    margin-left: 80%;
+    margin-bottom: 10%;
+  }

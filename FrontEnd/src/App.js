@@ -1,68 +1,53 @@
 import React from 'react';
 import './App.css';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
-<<<<<<< HEAD
-import ListSupplyRequestComponent from './components/Supply_Request_Management_IT20658236/ListSupplyRequestComponent';
-//import MarketPlaceComponent from './components/Marketplace_Management_IT20659608/MarketPlaceComponent';
-import Home from './components/Common_components/Home';
-import Login from './components/Login/Login';
-import DashBoard from './components/Common_components/DashBoard';
-import AddSupplyRequestFormComponent from './components/Supply_Request_Management_IT20658236/AddSupplyRequestFormComponent';
-import ViewSupplyRequestComponent from './components/Supply_Request_Management_IT20658236/ViewSupplyRequestComponent';
-import SupplyRequestQuotationComponent from './components/Supply_Request_Management_IT20658236/SupplyRequestQuotation';
-=======
-import ListRecipeComponent from './components/Recipe_Blog_Management_IT20659912/ListRecipeComponent';
-import AddRecipe from './components/Recipe_Blog_Management_IT20659912/AddRecipe';
-import SingleRecipe from './components/Recipe_Blog_Management_IT20659912/SingleRecipe';
-import EditRecipe from './components/Recipe_Blog_Management_IT20659912/EditRecipe';
-import RecipeReport from './components/Recipe_Blog_Management_IT20659912/RecipeReport';
->>>>>>> 79591a10c4c45013ce1a82d56d1773dc932b66e0
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
+import ListSupplyRequestComponent from './components/Supply_Request_Management_(IT20658236)/ListSupplyRequestComponent';
+import HeaderComponent from './components/Supply_Request_Management_(IT20658236)/HeaderComponent';
+import FooterComponent from './components/Supply_Request_Management_(IT20658236)/FooterComponent';
+import AddSupplyRequestComponnent from './components/Supply_Request_Management_(IT20658236)/AddSupplyRequestComponnent';
+import ViewSupplyRequest  from './components/Supply_Request_Management_(IT20658236)/ViewSupplyRequest';
+import CurrentStockItemReportComponent from './components/Supply_Request_Management_(IT20658236)/CurrentSupplyRequestsReportComponent';
+import ApprovedSupplyRequestComponnent from './components/Supply_Request_Management_(IT20658236)/ApprovedSupplyRequestComponnent';
+import RejectSupplyRequestComponnent from './components/Supply_Request_Management_(IT20658236)/RejectSupplyRequestComponnent';
+
+import Login from "./components/Login/Login";
+import RejectedSupplyRequestsReportComponent from './components/Supply_Request_Management_(IT20658236)/RejectedSupplyRequestsReportComponent';
+import ApprovedSupplyRequestReportComponents from './components/Supply_Request_Management_(IT20658236)/ApprovedSupplyRequestReportComponents';
+import ApprovedQuotation from './components/Supply_Request_Management_(IT20658236)/ApprovedQuotation';
+
+// import Sidebar from './components/Stock_Management_(IT20658236)/Sidebar';
 
 
 function App() {
   return (
     <div>
-      <Router>
-        <div>
-          <Switch>
-<<<<<<< HEAD
-            <Route path="/" exact component={Login} />
-            <Route path="/Home" component={Home}></Route>
-            <Route path="/DashBoard" component={DashBoard}></Route>
+        <Router>
+              {/* <HeaderComponent/> */}
+                <div>
 
-            {/* Supply Request */}
-            <Route path="/SupplyRequests" component={ListSupplyRequestComponent}></Route>
-            <Route path="/Add-SupplyRequest" component={AddSupplyRequestFormComponent}></Route>
-            <Route path="/SupplyRequest-Quotation/:supplyRequestID" component={SupplyRequestQuotationComponent}></Route>
-            <Route path="/view-SupplyRequest/:supplyRequestID" component={ViewSupplyRequestComponent}></Route>
-            {/* <Route path="/Update-SupplyRequest" component={ }></Route> */}
-            {/* <Route path="/Approved-SupplyRequest" component={ }></Route>
-            <Route path="/Rejected-SupplyRequest" component={ }></Route> */}
+                    <Switch> 
+                           {/* <Route path="/" exact component={Login} /> */}
 
-            {/* Market Place*/}
+                          <Route path = "/" exact component = {ListSupplyRequestComponent}></Route>
+                          <Route path = "/supplyRequest" component = {ListSupplyRequestComponent}></Route> 
+                          <Route path = "/add-supplyRequest" component = {AddSupplyRequestComponnent}></Route>
 
+                           <Route path = "/view-supplyRequest/:requestID" component = {ViewSupplyRequest}></Route>
+                           <Route path = "/current-supplyRequests-report" component = {CurrentStockItemReportComponent}></Route>
+                           <Route path = "/approve-supplyRequest/:requestID" component = {ApprovedSupplyRequestComponnent}></Route>
 
+                          <Route path = "/reject-supplyRequest/:requestID" component = {RejectSupplyRequestComponnent}></Route>
+                          <Route path = "/reject-SupplyRequest-report" component = {RejectedSupplyRequestsReportComponent}></Route>
+                          <Route path = "/approved-SupplyRequest-report" component = {ApprovedSupplyRequestReportComponents}></Route>
+                          <Route path = "/approved-quotation/:requestID" component = {ApprovedQuotation}></Route>
+                          
 
-=======
-    
->>>>>>> 79591a10c4c45013ce1a82d56d1773dc932b66e0
-            {/* Recipe */}
-            <Route exact path="/Recipes"  component={ListRecipeComponent}></Route>
-            <Route path="/AddRecipe" component={AddRecipe}></Route>
-            <Route path="/View/:recipeId" component={SingleRecipe}></Route>
-            <Route path="/EditRecipe/:recipeId" component={EditRecipe}></Route>
-            <Route path="/Report" component={RecipeReport}></Route>
-
-            {/* Advertisement */}
-            {/* <Route path="/" component={ }></Route> */}
-
-
-
-          </Switch>
-        </div>
-      </Router>
+                    </Switch>
+                  </div>
+              <FooterComponent />
+        </Router>
     </div>
-
+    
   );
 }
 

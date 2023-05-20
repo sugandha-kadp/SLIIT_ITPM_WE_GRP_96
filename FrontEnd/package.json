@@ -16,7 +16,7 @@
     "react-scripts": "^5.0.1",
     "react-to-pdf": "^0.0.14",
     "react-to-print": "^2.14.6",
-    "styled-components": "^5.3.9",
+    "styled-components": "^5.3.5",
     "sweetalert": "^2.1.2"
   },
   "scripts": {
@@ -39,10 +39,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
-  "main": "index.js",
-  "devDependencies": {},
-  "author": "",
-  "license": "ISC"
+  }
 }
