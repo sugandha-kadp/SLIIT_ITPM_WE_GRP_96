@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const MARKETITEM_API_BASE_URL = "http://localhost:8087/api/v1/MarketItem";
+const MARKETITEM_API_BASE_URL = "http://localhost:8086/api/v1/MarketItem";
 
 class MarketPlaceService {
 
@@ -21,6 +21,5 @@ class MarketPlaceService {
     }
 
 }
-
 
 export default new MarketPlaceService()
