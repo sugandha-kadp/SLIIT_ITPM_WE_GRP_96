@@ -1,57 +1,90 @@
-import React, { Component } from 'react'
+// ListEmployeeComponent.jsx
+import React, { useEffect, useState } from 'react';
 import '../../App.css';
-import RecipeService from '../../services/RecipeService';
+import { useHistory } from 'react-router-dom';
+import axios from 'axios';
 
-class ListRecipeComponent extends Component {
-    constructor(props) {
-        super(props)
+function ListEmployeeComponent(props) {
+  const [recipes, setRecipes] = useState([]);
+  const history = useHistory();
 
-        this.state = {
-            Recipes: []
+  useEffect(() => {
+    axios
+      .get('http://localhost:8080/api/v1/RecipeRepository')
+      .then((response) => {
+        console.log(response.data);
+        setRecipes(response.data);
+      })
+      .catch((error) => {
+        if (error.response) {
+          alert(error.response.data);
         }
+      });
+  }, []);
 
-    }
-    componentDidMount() {
-        RecipeService.getRecipe().then((res) => {
-            this.setState({ Recipes: res.data });
-        });
-    }
-
-    render() {
-        return (
-            <div >
-                <h1 className="text-center "> Recipes Blogs </h1>
-                <div className='col mt-4 mb-5'>
-                    <div id="div3" className="row ">
-                        <table className="table table-striped table-bordered">
-                            <thead>
-                                <tr>
-                                    <th className='text-center'> recipeId </th>
-                                    <th className='text-center'> title </th>
-                                    <th className='text-center'> content </th>
-                                    <th className='text-center'> author </th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {
-                                    this.state.Recipes.map(
-                                        recipe =>
-                                            <tr key={recipe.recipeId}>
-                                                <td className='text-center'> {recipe.recipeId} </td>
-                                                <td> {recipe.title} </td>
-                                                <td> {recipe.content}</td>
-                                                <td> {recipe.author} </td>
-                                                
-                                            </tr>
-                                    )
-                                }
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        )
-    }
-
+ 
+  const handleClick = (recipeId) => {
+    history.push(`/View/${recipeId}`);
+  }
+  const handleEdit = (recipeId) => {
+    history.push(`/EditRecipe/${recipeId}`);
+  }
+  const handleDelete = (recipeId) => {
+    const confirmDelete = window.confirm('Are you sure you want to delete this recipe?');
+    axios
+      .delete(`http://localhost:8080/api/v1/Recipe/${recipeId}`)
+      .then((response) => {
+        console.log(response.data);
+        alert('Recipe deleted successfully');
+        window.location.reload();
+      })
+      .catch((error) => {
+        if (error.response) {
+          alert(error.response.data);
+        }
+      });
+      
+  }
+  const handleNavigate = () => {
+    history.push(`/Report`);
+  }
+  
+  return (
+    <div>
+      <h1 className="text-center">Recipes Blogs</h1>
+      <button onClick={handleNavigate}>Reports</button>
+      <div className="col mt-4 mb-5">
+        <div id="div3" className="row">
+          <table className="table table-striped table-bordered">
+            <thead>
+              <tr>
+                <th className="text-center">RecipeId</th>
+                <th className="text-center">Title</th>
+                <th className="text-center">Content</th>
+                <th className="text-center">Author</th>
+                <th className="text-center"></th>
+              </tr>
+            </thead>
+            <tbody>
+              {recipes.map((recipe) => (
+                <tr key={recipe.recipeId}>
+                  <td className="text-center">{recipe.recipeId}</td>
+                  <td>{recipe.title}</td>
+                  <td>{recipe.content}</td>
+                  <td>{recipe.author}</td>
+                  <td>
+                    <button onClick={()=>handleClick(recipe.recipeId)}>View</button>
+                    <button onClick={()=>handleEdit(recipe.recipeId)}>Edit</button>
+                    <button onClick={()=>handleDelete(recipe.recipeId)}>Delete</button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  );
 }
-export default ListRecipeComponent
+
+export default ListEmployeeComponent;
