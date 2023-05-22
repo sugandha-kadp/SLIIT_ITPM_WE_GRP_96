@@ -43,3 +43,4 @@ Food waste is a major problem that is closely related to responsible consumption
   <li>The second one is a mini marketplace, where users can buy those foods.</li>
   <li>Third, we have planned a component that promotes and advertises businesses related to food made of leftover ingredients to encourage small businesses.</li>
 </ul>
+<h4>Technologies : SpringBoot Framework, Java, React, MySQL</h4>
